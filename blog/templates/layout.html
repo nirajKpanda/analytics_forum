@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  {% block pageTitle %}
+    <title>Blog home</title>
+  {% endblock pageTitle %}
+  <link href="/static/materialize/css/materialize.css" rel="stylesheet">
+  <link href="/static/materialize/css/icons.css" rel="stylesheet">
+  <link href="/static/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body>
+ {% include 'navigation-bar.html' %}
+ {% block section %}
+     {% include 'index.html' %}
+ {% endblock section %}
+ {% include 'footer.html' %}
+
+  <script src="/static/js/jquery-1.11.2.min.js"></script>    
+  <script src="/static/materialize/js/materialize.min.js"></script>
+  {% block JSBlock %}
+      <script type="text/javascript">
+           $(".button-collapse").sideNav();
+      </script>
+  {% endblock JSBlock %}
+</body>
+</html>

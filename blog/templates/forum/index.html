@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% block pageTitle %}
+  <title>Post Home</title>
+{% endblock pageTitle %}
+{% block section %}
+  {% include 'forum/post.html' %}
+{% endblock section %}
+{% block JSBlock %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".comments").hide();
+        });
+        function showComments(postid){
+            $('div.' + postid ).toggle();
+        }
+    </script>
+{% endblock JSBlock %}

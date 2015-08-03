@@ -12,9 +12,14 @@ forum = Blueprint("forum", __name__)
 
 @forum.route("/")
 def home():
+    return render_template('layout.html', posts=posts)
+
+
+@forum.route('/post')
+def post_home():
     posts = []
-    for post in Post.query.all():
-        print "Blog: {} by {} ".format(post.title, post.writer.username)
+    for post in Post.query.order_by(Post.created_at.desc()).all():
+        print "forum: {} by {} ".format(post.title, post.writer.username)
         print "-" * 60
         print post.body
         print "-" * 60
@@ -38,5 +43,4 @@ def home():
             timestamp=post.created_at,
             comments=commentlist))
 
-    
-    return render_template('posts.html', posts=posts)
+    return render_template('forum/index.html', posts=posts)

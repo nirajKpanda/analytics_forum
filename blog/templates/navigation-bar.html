@@ -1,0 +1,22 @@
+<nav class="">
+   <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a>
+    <div class="nav-wrapper container">
+        <a href="{{ url_for('forum.home') }}" class="brand-logo">Discuss.me</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li>
+            <a href="{{ url_for('forum.post_home') }}">FORUMS</a>
+            </li>
+            <li>
+                <a href="#!">TRENDS</a>
+            </li>
+            <li>
+                <a href="#!">SEARCH</a>
+            </li>
+        </ul>
+    </div>
+    <ul id="slide-out" class="side-nav">
+        <li><a href="#!">Forums</a></li>
+        <li><a href="#!">Search</a></li>
+        <li><a href="#!">Trends</a></li>
+   </ul>
+</nav>

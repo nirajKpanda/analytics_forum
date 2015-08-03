@@ -14,7 +14,7 @@ def create_app(Config):
     return app
 
 def register_blueprints(app):
-    app.register_blueprint(forum, url_prefix="/forum")
+    app.register_blueprint(forum, url_prefix="/blog")
 
 
 def configure_extensions(app):
