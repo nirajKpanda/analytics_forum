@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+   <link href="/static/css/metro.min.css" rel="stylesheet">
+   <link href="/static/css/metro-icons.css" rel="stylesheet">
+   <link href="/static/css/font-awesome.min.css" rel="stylesheet">
+   <script src="/static/js/jquery-1.11.2.min.js"></script>    
+   <script src="/static/js/metro.min.js"></script>    
+</head>
+<body>
+<div class="header container">
+    <h1 class="leader fg-blue">All Posts</h1>
+    <hr>
+</div>
+<div class="container" style="border: 1px solid #eeeeee; padding: 20px;" width="400px">
+    {% for post in posts %}
+      <div style="border: 1px solid #eeeeee; padding: 10px; margin: 10px;">
+          <h2 class="leader fg-gray">{{post.title}}</h2>
+          <p class="sub-header">By <a href="#!">{{post.author}}</a> at {{post.timestamp}}
+        <div class="text-accent" style="border: 1px solid #fafafa">
+          {{post.body}}
+        </div>
+        <div style="border: 0px solid #eeeeee; padding: 5px; margin-top: 10px;">
+            <button class="button">{{post.upvotes}} upvotes <i class="fa fa-thumbs-up"></i></button> 
+            <button class="button">{{post.downvotes}} downvotes <i class="fa fa-thumbs-down"></i></button> 
+            <button class="button" id="{{post.postid}}" onclick="showComments({{post.postid}})">{{ post.comments|length }} comments <i class="fa fa-comments"></i></button> 
+        </div>
+        <div class="comments {{post.postid}}" class="container" style="background-color: #fafafa">
+        {% for comment in post.comments %}
+            <div id="" style="border: 0px solid #eeeeee; padding: 10px; margin-top: 5px">
+                <img data-format="cycle" height="48px" width="48px" src="/" />
+                <span class='margin5'></span><a href="#!">{{comment.commentedby}}</a> {{comment.text}}
+            </div>
+        {% endfor %}
+            <div style="border: 0px solid #eeeeee; padding: 2px; margin-top: 5px" class="input-control text">
+                <input type="text" placeholder="Enter your comments"/>
+            </div>
+        </div>
+      </div>
+    {% endfor %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".comments").hide();
+        });
+        function showComments(postid){
+            $('div.' + postid ).toggle();
+        }
+    </script>
+</div>
+</body>
